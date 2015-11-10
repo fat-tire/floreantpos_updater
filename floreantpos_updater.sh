@@ -18,8 +18,13 @@
 
 
 NEEDED_PACKAGES=("git" "git-svn" "maven2" "openjdk-7-jdk" "openjdk-7-doc" "openjdk-7-jre-lib")
+# source goes here
 SOURCE_DIR=$HOME/floreantpos_source
+# the built zips will go here
 TARGET_DIR=$HOME/Desktop/floreantpos_builds
+# a "live" version, suitable for running, goes here
+ACTIVE_DIR=$HOME/Desktop/active_floreantpos
+
 FLOREANT_SVN_URL=svn://svn.code.sf.net/p/floreantpos/code/trunk
 
 #------------------------------------------------------------------------------------------
@@ -141,4 +146,8 @@ log
 log "When you want a new build with the very latest source, simply run this script again."
 log
 log "Enjoy!"
-
+log
+log "Copying to $(tput setaf 1)$ACTIVE_DIR"
+sudo -u "$SUDO_USER" mkdir -p $ACTIVE_DIR
+sudo -u "$SUDO_USER" cp -r $SOURCE_DIR/target/floreantpos-bin/floreantpos/* $ACTIVE_DIR/
+log "The active floreantpos directory was updated.  You can continue to run it out of there."
