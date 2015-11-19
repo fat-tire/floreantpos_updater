@@ -115,8 +115,8 @@ fi
 log "Updating to latest source code at $SOURCE_DIR/trunk..."
 sudo -u "$SUDO_USER" git --git-dir="$SOURCE_DIR"/.git svn fetch -q
 log "Done!"
-log "Switching source directory to HEAD (the latest code)..."
-sudo -u "$SUDO_USER" git --git-dir="$SOURCE_DIR"/.git checkout -q HEAD
+log "Switching source directory to the latest code..."
+sudo -u "$SUDO_USER" git --git-dir="$SOURCE_DIR"/.git checkout -q remotes/git-svn
 log "Clean install maven..."
 sudo -u "$SUDO_USER" mvn clean install -Dmaven.buildNumber.skip -f"$SOURCE_DIR"/pom.xml -q
 log "Manually downloading a missing maven2 file..."
@@ -148,6 +148,6 @@ log
 log "Enjoy!"
 log
 log "Copying to $(tput setaf 1)$ACTIVE_DIR"
-sudo -u "$SUDO_USER" mkdir -p $ACTIVE_DIR
 sudo -u "$SUDO_USER" cp -r $SOURCE_DIR/target/floreantpos-bin/floreantpos/* $ACTIVE_DIR/
-log "The active floreantpos directory was updated.  You can continue to run it out of there."
+log "The active floreantpos directory was updated.  You can run floreant out of there."
+
