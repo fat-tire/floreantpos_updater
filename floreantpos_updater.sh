@@ -152,7 +152,7 @@ log "Copying to $(tput setaf 1)$ACTIVE_DIR$(tput sgr0)"
 sudo -u "$SUDO_USER" cp -r $SOURCE_DIR/target/floreantpos-bin/floreantpos/* $ACTIVE_DIR/
 if [ -f $CUSTOM_LOGO ];
    then
-      log "Copying $(tput setaf 1)$CUSTOM_LOGO(tput sgr0) to $(tput setaf 1)$ACTIVE_DIR/config/logo.png$(tput sgr0)"
+      log "Copying $(tput setaf 1)$CUSTOM_LOGO$(tput sgr0) to $(tput setaf 1)$ACTIVE_DIR/config/logo.png$(tput sgr0)"
       sudo -u "$SUDO_USER" cp $CUSTOM_LOGO $ACTIVE_DIR/config/logo.png
 fi
 log "The active floreantpos directory was updated.  You can run floreant out of there."
